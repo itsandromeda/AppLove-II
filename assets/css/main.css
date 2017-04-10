@@ -1,0 +1,160 @@
+/*CLASES REUTILIZABLES*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.71429;
+    background-color: #fff;
+}
+
+header {
+    position: fixed;
+    background: white;
+    width: 100%;
+    top: 0;
+}
+
+.menu-container {
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.container {
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.container:before,
+.container:after {
+    content: " ";
+    display: table;
+}
+
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.container:after {
+    clear: both;
+}
+
+.mb-0 {
+    margin-bottom: 0px;
+}
+
+.mt-0 {
+    margin-top: 0px;
+}
+
+.m-0 {
+    margin: 0px;
+}
+
+a {
+    color: #373B47;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #E95853;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.link {
+    font-weight: 700;
+    padding: 21px;
+    display: inline-block;
+}
+
+.logo {
+    float: right;
+}
+
+.menu {
+    padding: 14px 70px;
+    overflow: auto;
+}
+
+#home {
+    background-image: url(../img/bg-home.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 554px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+#home .container {
+    color: white;
+    padding: 70px;
+}
+
+.text-home {
+    font-size: 53px;
+}
+
+.btn-home {
+    background: #2ECC71;
+    color: #FFF;
+    padding: 11px 20px;
+    border-radius: 1px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 63px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+#services {
+    background-color: #F17C72;
+    text-align: center;
+    color: #FFF;
+    padding: 70px 7px;
+}
+
+.text-services {
+    font-size:35px;
+    letter-spacing: 2px;
+}
+
+.box-services {
+    display: inline-block;
+    width: 30%;
+    margin-top: 63px;
+}
+
+footer {
+    text-align: center;
+    height: 70px;
+    background: #373B47;
+    color: #FFF;
+    padding-top: 7px;
+}
