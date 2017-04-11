@@ -1,38 +1,38 @@
 /*global console, document*/
 var items = [{
-    path: "assets/img/img-1.jpg",
+    path: "assets/img/img-0.jpg",
     alt: "Tayman",
     caption: "Tayman Brochure"
 }, {
-    path: "assets/img/img-2.jpg",
+    path: "assets/img/img-1.jpg",
     alt: "Kerala",
     caption: "Kerala Bottle"
 }, {
-    path: "assets/img/img-3.jpg",
+    path: "assets/img/img-2.jpg",
     alt: "The Brass Coq",
     caption: "The Brass Coq Menu"
 }, {
-    path: "assets/img/img-4.jpg",
+    path: "assets/img/img-3.jpg",
     alt: "Sungenre",
     caption: "Sungenre Vinyl Record"
 }, {
-    path: "assets/img/img-5.jpg",
+    path: "assets/img/img-4.jpg",
     alt: "Mitragyna Speciosa Bag",
     caption: "Mitragyna Speciosa"
 }, {
-    path: "assets/img/img-6.jpg",
+    path: "assets/img/img-5.jpg",
     alt: "Foam King Packaging",
     caption: "Foam King"
 }, {
-    path: "assets/img/img-7.jpg",
+    path: "assets/img/img-6.jpg",
     alt: "Volition",
     caption: "Volition Website"
 }, {
-    path: "assets/img/img-10.jpg",
+    path: "assets/img/img-7.jpg",
     alt: "Owls & Apples",
     caption: "Owls & Apples Website"
 }, {
-    path: "assets/img/img-11.jpg",
+    path: "assets/img/img-8.jpg",
     alt: "Sherwood",
     caption: "Sherwood Website"
 }];
@@ -43,10 +43,15 @@ function printItems(path, caption, alt, i) {
         parent = document.createElement("figure"),
         img = document.createElement("img"),
         captionText = document.createTextNode(caption),
-        figcaption = document.createElement("figcaption");
-
+        figcaption = document.createElement("figcaption"),
+        /*MODALS*/
+        modalContainer = document.getElementById("modal"),
+        modalImg = document.createElement("img"),
+        modals = document.createElement("figure");
+    
     img.classList.add("item");
-    img.setAttribute("id", "img0" + i);
+    img.setAttribute("id", "img-" + i);
+    img.setAttribute("name", "img-" + i);
     img.setAttribute("src", path);
     img.setAttribute("alt", alt);
     figcaption.appendChild(captionText);
@@ -55,6 +60,14 @@ function printItems(path, caption, alt, i) {
     parent.appendChild(img);
     parent.appendChild(figcaption);
     items.appendChild(parent);
+    
+    
+    modals.setAttribute("id", "modal-img-" + i);
+    modalImg.setAttribute("name", "img-" + i);
+    modalImg.classList.add("modal-pictures");
+    modalImg.setAttribute("src", path);
+    modals.appendChild(modalImg);
+    modalContainer.appendChild(modals);
 }
 
 var i;
@@ -79,19 +92,24 @@ for (i = 0; i < items.length; i += 1) {
 
 /*MODAL*/
 
-var modal = document.getElementById('modal');
-var modalImg = document.getElementById("modal-pic");
-var captionText = document.getElementById("caption");
+var modal = document.getElementById('modal'),
+    src,
+    id;
 
 var modalDisplay = function () {
     "use strict";
     modal.style.display = "block";
     modal.style.opacity = 1;
-    modalImg.src = this.src;
+};
+
+var trigger = function () {
+    "use strict";
+    //src = this.src;
+    modalDisplay();
 };
 
 for (i = 0; i < photos.length; i += 1) {
-    document.getElementById('img0' + i).addEventListener('click', modalDisplay);
+    document.getElementById('img-' + i).addEventListener('click', trigger);
 }
 
 var close = document.getElementsByClassName("close")[0];
@@ -99,4 +117,43 @@ var close = document.getElementsByClassName("close")[0];
 close.addEventListener('click', function () {
     "use strict";
     modal.style.display = "none";
+});
+
+var slideIndex = 1,
+    prev = document.getElementById("prev"),
+    next = document.getElementById("next");
+
+function showSlides(n) {
+    "use strict";
+    var i,
+        slides = document.getElementsByClassName("modal-pictures");
+
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i += 1) {
+        slides[i].style.display = "none";
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+}
+
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    "use strict";
+    showSlides(slideIndex += n);
+}
+
+prev.addEventListener("click", function () {
+    "use strict";
+    plusSlides(-1);
+});
+
+next.addEventListener("click", function () {
+    "use strict";
+    plusSlides(1);
 });

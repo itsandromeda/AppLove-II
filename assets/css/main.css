@@ -186,11 +186,11 @@ a:hover {
     margin-bottom: 10px;
 }
 
-[id^="img0"] {
+[id^="img-"] {
     cursor: pointer;
 }
 
-[id^="img0"]:hover {
+[id^="img-"]:hover {
     opacity: 0.7;
 }
 
@@ -221,6 +221,7 @@ figcaption {
     right: 0;
 }
 
+.modal-pictures,
 .modal-content {
     border: 15px solid white;
     -webkit-box-shadow: -1px 1px 25px 9px rgba(0,0,0,0.2);
@@ -255,14 +256,13 @@ figcaption {
 .next {
     position: absolute;
     z-index: 2;
-    opacity: 0;
+    opacity: 1;
     font-size: 35px;
     color: #3BD2A0;
     transition: all 0.3s;
 }
 
 .close {
-    opacity: 1;
     font-size: 70px;
     top: 8px;
     right: 345px;
