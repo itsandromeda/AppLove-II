@@ -1,4 +1,4 @@
-/*global console, document*/
+/*global console, document, showSlides*/
 var items = [{
     path: "assets/img/img-0.jpg",
     alt: "Tayman",
@@ -51,7 +51,7 @@ function printItems(path, caption, alt, i) {
     
     img.classList.add("item");
     img.setAttribute("id", "img-" + i);
-    img.setAttribute("name", "img-" + i);
+    img.setAttribute("name", i);
     img.setAttribute("src", path);
     img.setAttribute("alt", alt);
     figcaption.appendChild(captionText);
@@ -63,7 +63,7 @@ function printItems(path, caption, alt, i) {
     
     
     modals.setAttribute("id", "modal-img-" + i);
-    modalImg.setAttribute("name", "img-" + i);
+    modalImg.setAttribute("name", i);
     modalImg.classList.add("modal-pictures");
     modalImg.setAttribute("src", path);
     modals.appendChild(modalImg);
@@ -93,6 +93,7 @@ for (i = 0; i < items.length; i += 1) {
 /*MODAL*/
 
 var modal = document.getElementById('modal'),
+    slideIndex = 1,
     src,
     id;
 
@@ -102,10 +103,14 @@ var modalDisplay = function () {
     modal.style.opacity = 1;
 };
 
+var  currentSlide = function (n) {
+    "use strict";
+    showSlides(slideIndex = parseInt((n), 10));
+};
 var trigger = function () {
     "use strict";
-    //src = this.src;
     modalDisplay();
+    currentSlide(this.name);
 };
 
 for (i = 0; i < photos.length; i += 1) {
@@ -119,8 +124,7 @@ close.addEventListener('click', function () {
     modal.style.display = "none";
 });
 
-var slideIndex = 1,
-    prev = document.getElementById("prev"),
+var prev = document.getElementById("prev"),
     next = document.getElementById("next");
 
 function showSlides(n) {
@@ -138,7 +142,7 @@ function showSlides(n) {
         slides[i].style.display = "none";
     }
 
-    slides[slideIndex - 1].style.display = "block";
+    slides[n].style.display = "block";
 }
 
 showSlides(slideIndex);
@@ -147,6 +151,7 @@ function plusSlides(n) {
     "use strict";
     showSlides(slideIndex += n);
 }
+
 
 prev.addEventListener("click", function () {
     "use strict";
